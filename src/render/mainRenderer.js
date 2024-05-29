@@ -103,6 +103,18 @@ const app = Vue.createApp({
 
             } else {
                 let newElement = document.createElement('div');
+                // Format the datetime to "YYYY/MM/DD HH:MM:SS"
+                var currentDatetime = new Date();
+                let formattedDatetime =  
+                    currentDatetime.getUTCFullYear() +"/"+ 
+                    (currentDatetime.getUTCMonth()+1) +"/"+ 
+                    currentDatetime.getUTCDate() + " " + 
+                    currentDatetime.getUTCHours() + ":" + 
+                    currentDatetime.getUTCMinutes() + ":" + 
+                    currentDatetime.getUTCSeconds();
+
+                // Set the title attribute
+                newElement.setAttribute('title', formattedDatetime);
 
                 newElement.innerHTML = window.api.ansi_to_html(data);
                 // iterate newElement children and add click event if onCommand attribute is present
